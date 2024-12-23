@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الصور</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .image-container img {
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .image-container:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>معرض الصور</h1>
+    <div class="gallery">
+        <div class="image-container" onclick="openModal('https://via.placeholder.com/300x200')">
+            <img src="file:///C:/Users/comup%20market/Desktop/images%20(45).jpeg" alt="صورة 1">
+            <div class="overlay">تصميم مواقع الالكترونية</div>
+        </div>
+        <div class="image-container" onclick="openModal('https://via.placeholder.com/300x200')">
+            <img src="file:///C:/Users/comup%20market/Desktop/%D8%AA%D9%86%D8%B2%D9%8A%D9%84%20(19).jpeg" alt="صورة 2">
+            <div class="overlay">تصميم مواقع الالكترونية</div>
+        </div>
+        <div class="image-container" onclick="openModal('https://via.placeholder.com/300x200')">
+            <img src="file:///C:/Users/comup%20market/Desktop/New%20folder/images%20(41).jpeg" alt="صورة 3">
+            <div class="overlay">تصميم كتب الالكترونية</div>
+        </div>
+        <div class="image-container" onclick="openModal('https://via.placeholder.com/300x200')">
+            <img src="file:///C:/Users/comup%20market/Desktop/%D8%AA%D9%86%D8%B2%D9%8A%D9%84%20(18).jpeg" alt="صورة 4">
+            <div class="overlay">مصمم جرافيك</div>
+        </div>
+        <div class="image-container" onclick="openModal('https://via.placeholder.com/300x200')">
+            <img src="file:///C:/Users/comup%20market/Desktop/%D8%AA%D9%86%D8%B2%D9%8A%D9%84%20(20).jpeg" alt="صورة 5">
+            <div class="overlay">تصمم كتب الالكترونية</div>
+        </div>
+        <div class="image-container" onclick="openModal('https://via.placeholder.com/300x200')">
+            <img src="file:///C:/Users/comup%20market/Desktop/New%20folder/%D8%AA%D9%86%D8%B2%D9%8A%D9%84%20(1).png" alt="صورة 6">
+            <div class="overlay">مصمم جرافيك<div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" alt="الصورة المكبرة">
+</div>
+
+<script>
+    function openModal(src) {
+        document.getElementById('modalImg').src = src;
+        document.getElementById('modal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('modal')) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>

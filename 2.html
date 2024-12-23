@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن الموقع</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #fbfffb;
+        }
+        header {
+            background: linear-gradient(135deg, #131313, #00BFFF);
+            color: rgb(7, 253, 3);
+            padding: 20px 0;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #0e0d0d, #0680a8);
+            box-shadow: 0 4px 15px rgba(238, 228, 228, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            
+            color: #ffea00;
+            transition: color 0.3s;
+        }
+        h2:hover {
+            color: #fa6767;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #000000;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        li:hover {
+            background: #2f8fe9;
+        }
+        .details {
+            display: none;
+            padding: 10px;
+            background: #1d1a1a;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background: linear-gradient(135deg, #000000, #0680a8);
+            color: rgb(255, 255, 255);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <h1>عن موقعنا</h1>
+    </header>
+    <center>
+    <div class="container">
+        <h2>مرحبًا بكم في موقعنا</h2>
+        <h3>موقعنا هو منصة تهدف إلى تقديم خدمات شاملة ؛ نحن نسعى جاهدين لتوفير محتوى عالي الجودة يلبي احتياجات زوارنا</h3>
+        
+        <h2>أهدافنا</h2>
+        <ul>
+            <li>تقديم معلومات دقيقة وموثوقة</li>
+            <li>تسهيل الوصول إلى الموارد والخدمات المتاحة</li>
+            <li>تلبية احتياجات المستفيد</li>
+        </ul>
+        
+        <h2>خدماتنا</h2>
+        <h3>نقدم مجموعة متنوعة من الخدمات، بما في ذلك</h3>
+        <ul>
+            <li onclick="toggleDetails('service1Details')">تصميم الجرافيك
+                <div class="details" id="service1Details">تصميم شعارات وبوسترات </div>
+            </li>
+            <li onclick="toggleDetails('service2Details')">تصميم المواقع
+                <div class="details" id="service2Details">بلغة الترميز وغيرها</div>
+            </li>
+            <li onclick="toggleDetails('service3Details')">تصميم محتوي
+                <div class="details" id="service3Details"> محتوي تعليمي وغير تعليمي</div>
+            </li>
+        </ul>
+        
+        <h2>تواصل معنا</h2>
+        <p>إذا كان لديك أي استفسارات أو تحتاج إلى مزيد من المعلومات، لا تتردد في <a href="contact.html" style="color: #ffffff; text-decoration: underline;">التواصل معنا</a>.</p>
+    </div>
+    <footer>
+        <p>© 2024 جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        // عرض رسالة ترحيبية عند تحميل الصفحة
+        window.onload = function() {
+            alert("مرحبًا بكم في موقعنا! استمتع بتصفح المحتوى.");
+        };
+
+        // وظيفة لتبديل عرض تفاصيل الخدمة
+        function toggleDetails(detailsId) {
+            const details = document.getElementById(detailsId);
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+    </script>
+    </center>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

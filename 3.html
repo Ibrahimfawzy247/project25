@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقييم الصفحة</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:  linear-gradient(135deg, #000000, #00BFFF);
+            color: #b3b30a;
+        }
+        header {
+            background: linear-gradient(135deg, #000000, #00BFFF);
+            color: rgb(31, 223, 6);
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #000000, #00BFFF);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            color: #ffffff;
+        }
+        .star-rating {
+            direction: rtl;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .star {
+            font-size: 2em;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        .star:hover,
+        .star.selected {
+            color: #ffcc00;
+            transform: scale(1.2);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
+        .comments-section {
+            margin-top: 30px;
+        }
+        .comment {
+            background: #090a0a;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 5px solid #007BFF;
+        }
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background: linear-gradient(135deg, #000000, #00BFFF);
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+    
+        <h1>تقييم صفحة الموقع</h1>
+    </header>
+    <center>
+    <div class="container">
+        <h2>قيم تجربتك معنا</h2>
+        <div class="star-rating" id="starRating">
+            <span class="star" data-value="5">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="1">&#9733;</span>
+        </div>
+        <input type="hidden" id="rating" name="rating" required>
+        <div class="error" id="ratingError">يرجى اختيار تقييم</div>
+        
+        <label for="feedback">ملاحظاتك</label>
+        <textarea id="feedback" name="feedback" rows="5" placeholder="" required></textarea>
+        
+        <input type="submit" value="إرسال التقييم" onclick="submitRating(event)">
+        
+        <div class="comments-section" id="commentsSection">
+            <h3>التعليقات السابقة</h3>
+        </div>
+    </div>
+    <footer>
+        <p>© 2024 جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+        const ratingError = document.getElementById('ratingError');
+        const commentsSection = document.getElementById('commentsSection');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = star.getAttribute('data-value');
+                ratingInput.value = value;
+
+                stars.forEach(s => {
+                    s.classList.remove('selected');
+                });
+                star.classList.add('selected');
+                star.previousElementSibling ? star.previousElementSibling.classList.add('selected') : null;
+                ratingError.style.display = 'none'; // إخفاء رسالة الخطأ
+            });
+        });
+
+        function submitRating(event) {
+            event.preventDefault();
+            const rating = ratingInput.value;
+            const feedback = document.getElementById('feedback').value;
+
+            if (rating) {
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.innerHTML = `<strong>تقييم: ${rating}</strong><p>${feedback}</p>`;
+                commentsSection.appendChild(commentDiv);
+
+                alert(`شكرًا لتقييمك! \nالتقييم: ${rating} \nملاحظاتك: ${feedback}`);
+                
+                // إعادة تعيين النموذج
+                ratingInput.value = '';
+                document.getElementById('feedback').value = '';
+                stars.forEach(s => s.classList.remove('selected'));
+            } else {
+                ratingError.style.display = 'block'; // عرض رسالة الخطأ
+            }
+        }
+    </script>
+    </center>
+</body>
+</html>
+
+
+
